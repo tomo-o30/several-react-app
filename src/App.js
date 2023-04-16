@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState("");
-  const [completeFlag, setCompleteFlag] = useState(false);
+  const [id, setId] = useState(0);
 
   const handleInputChange = (e) => {
     setTodo(e.target.value);
@@ -14,17 +14,30 @@ function App() {
     e.preventDefault();
 
     if (todo !== "") {
+      setId((prevId) => prevId + 1);
       setTodos([
         ...todos,
         {
-          id: todos.length + 1,
-          completeFlag: completeFlag,
+          id,
+          completeFlag: false,
           text: todo.trim(),
         },
       ]);
+      console.log(todos);
       setTodo("");
     }
   };
+
+  const handleComplete = () => {};
+
+  const handleDelete = (id) => {
+    // const newTodos = todos.filter((todo) => {
+    //   return todo.id !== id;
+    // });
+    // setTodos(newTodos);
+  };
+
+  const handleBeBack = (e) => {};
 
   return (
     <div>
@@ -45,9 +58,11 @@ function App() {
             .filter((todo) => todo.completeFlag === false)
             .map((todo) => (
               <>
-                <li key={todo.id}>{todo.text}</li>
-                <button>追加</button>
-                <button>削除</button>
+                <li key={todo.id}>
+                  {todo.text}
+                  <button onClick={handleComplete}>完了</button>
+                  <button onClick={handleDelete(todo.id)}>削除</button>
+                </li>
               </>
             ))}
         </ul>
@@ -60,8 +75,7 @@ function App() {
             .map((todo) => (
               <>
                 <li key={todo.id}>{todo.text}</li>
-                <button>追加</button>
-                <button>削除</button>
+                <button onClick={handleBeBack}>戻す</button>
               </>
             ))}
         </ul>
