@@ -1,16 +1,22 @@
 import { useState } from "react";
 import "./App.css";
 
-function App() {
-  const [todos, setTodos] = useState([]);
+interface Todo {
+  id: number;
+  completeFlag: boolean;
+  text: string;
+}
+
+const App = ()=> {
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [todo, setTodo] = useState("");
   const [id, setId] = useState(0);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
   };
 
-  const handleButtonClick = (e) => {
+  const handleButtonClick = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     if (todo !== "") {
@@ -28,7 +34,7 @@ function App() {
     }
   };
 
-  const handleComplete = (id) => {
+  const handleComplete = (id:number) => {
     const updateTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completeFlag: true };
@@ -39,14 +45,14 @@ function App() {
     setTodos(updateTodos);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id:number) => {
     const newTodos = todos.filter((todo) => {
       return todo.id !== id;
     });
     setTodos(newTodos);
   };
 
-  const handleBeBack = (id) => {
+  const handleBeBack = (id:number) => {
     const updateTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completeFlag: false };
@@ -67,7 +73,7 @@ function App() {
           value={todo}
           onChange={handleInputChange}
         />
-        <button onClick={handleButtonClick}>追加</button>
+        <button onClick={(e)=>handleButtonClick(e)}>追加</button>
       </div>
       <div className="imcomplete-area">
         <p className="title">未完了のTODO</p>
