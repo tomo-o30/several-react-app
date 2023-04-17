@@ -28,16 +28,34 @@ function App() {
     }
   };
 
-  const handleComplete = () => {};
-
-  const handleDelete = (id) => {
-    // const newTodos = todos.filter((todo) => {
-    //   return todo.id !== id;
-    // });
-    // setTodos(newTodos);
+  const handleComplete = (id) => {
+    const updateTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completeFlag: true };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(updateTodos);
   };
 
-  const handleBeBack = (e) => {};
+  const handleDelete = (id) => {
+    const newTodos = todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    setTodos(newTodos);
+  };
+
+  const handleBeBack = (id) => {
+    const updateTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, completeFlag: false };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(updateTodos);
+  };
 
   return (
     <div>
@@ -57,13 +75,11 @@ function App() {
           {todos
             .filter((todo) => todo.completeFlag === false)
             .map((todo) => (
-              <>
-                <li key={todo.id}>
-                  {todo.text}
-                  <button onClick={handleComplete}>完了</button>
-                  <button onClick={handleDelete(todo.id)}>削除</button>
-                </li>
-              </>
+              <li className="todo-area" key={todo.id}>
+                {todo.text}
+                <button onClick={() => handleComplete(todo.id)}>完了</button>
+                <button onClick={() => handleDelete(todo.id)}>削除</button>
+              </li>
             ))}
         </ul>
       </div>
@@ -73,10 +89,10 @@ function App() {
           {todos
             .filter((todo) => todo.completeFlag === true)
             .map((todo) => (
-              <>
-                <li key={todo.id}>{todo.text}</li>
-                <button onClick={handleBeBack}>戻す</button>
-              </>
+              <li className="todo-area" key={todo.id}>
+                {todo.text}{" "}
+                <button onClick={() => handleBeBack(todo.id)}>戻す</button>
+              </li>
             ))}
         </ul>
       </div>
