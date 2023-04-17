@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`changes the class when hovered 1`] = `
+<div>
+  <div
+    className="input-area"
+  >
+    <input
+      name="todo"
+      onChange={[Function]}
+      placeholder="Create a new todo"
+      type="text"
+      value=""
+    />
+    <button
+      onClick={[Function]}
+    >
+      追加
+    </button>
+  </div>
+  <div
+    className="imcomplete-area"
+  >
+    <p
+      className="title"
+    >
+      未完了のTODO
+    </p>
+    <ul />
+  </div>
+  <div
+    className="complete-area"
+  >
+    <p
+      className="title"
+    >
+      完了のTODO
+    </p>
+    <ul />
+  </div>
+</div>
+`;
