@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Button from "./components/Button";
 
 interface Todo {
   id: number;
@@ -16,8 +17,10 @@ const App = ()=> {
     setTodo(e.target.value);
   };
 
-  const handleButtonClick = (e:React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleButtonClick = (e?:React.MouseEvent<HTMLButtonElement>) => {
+    if (e) {
+      e.preventDefault();
+    }
 
     if (todo !== "") {
       setId((prevId) => prevId + 1);
@@ -73,7 +76,7 @@ const App = ()=> {
           value={todo}
           onChange={handleInputChange}
         />
-        <button onClick={(e)=>handleButtonClick(e)}>追加</button>
+        <Button onClick={(e)=>handleButtonClick(e)} text='追加' />
       </div>
       <div className="imcomplete-area">
         <p className="title">未完了のTODO</p>
@@ -83,8 +86,8 @@ const App = ()=> {
             .map((todo) => (
               <li className="todo-area" key={todo.id}>
                 {todo.text}
-                <button onClick={() => handleComplete(todo.id)}>完了</button>
-                <button onClick={() => handleDelete(todo.id)}>削除</button>
+                <Button onClick={() => handleComplete(todo.id)} text='完了'/>
+                <Button onClick={() => handleDelete(todo.id)} text='削除'/>
               </li>
             ))}
         </ul>
@@ -97,7 +100,7 @@ const App = ()=> {
             .map((todo) => (
               <li className="todo-area" key={todo.id}>
                 {todo.text}{" "}
-                <button onClick={() => handleBeBack(todo.id)}>戻す</button>
+                <Button onClick={() => handleBeBack(todo.id)} text='戻す'/>
               </li>
             ))}
         </ul>
