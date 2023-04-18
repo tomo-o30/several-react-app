@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./App.css";
 import Button from "./components/Button";
 
@@ -6,11 +6,14 @@ interface Todo {
   id: number;
   completeFlag: boolean;
   text: string;
+  todoState: string;
 }
 
 const App = ()=> {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [todo, setTodo] = useState("");
+  const [todoFilterState, setTodoFilterState] = useState("all");
+  const [todoState, setTodoState] = useState("notStarted");
   const [id, setId] = useState(0);
 
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +33,7 @@ const App = ()=> {
           id,
           completeFlag: false,
           text: todo.trim(),
+          todoState: todoState
         },
       ]);
       console.log(todos);
@@ -66,6 +70,13 @@ const App = ()=> {
     setTodos(updateTodos);
   };
 
+  const handleSelectStateChange= (e: ChangeEvent<HTMLSelectElement>): void => {
+    setTodoState(e.target.value);
+  }
+
+  const handleFilterStateChange = (e: ChangeEvent<HTMLSelectElement>): void => {
+    setTodoFilterState(e.target.value);
+  }
   return (
     <div>
       <div className="input-area">
@@ -77,19 +88,33 @@ const App = ()=> {
           onChange={handleInputChange}
         />
         <Button onClick={(e)=>handleButtonClick(e)} text='追加' />
+        <select  value={todoFilterState} onChange={(e) =>handleFilterStateChange(e)}  id="todo-state">
+          <option value="all">全て</option>
+          <option value="notStarted">未着手</option>
+          <option value="working">作業中</option>
+        </select>
       </div>
       <div className="imcomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          {todos
+          {
+          // ここにif文で分岐をさせたい
+          todos
             .filter((todo) => todo.completeFlag === false)
             .map((todo) => (
               <li className="todo-area" key={todo.id}>
                 {todo.text}
+                <select value={todoState} onChange={(e) =>handleSelectStateChange(e)} id="todo-state">
+                  <option value="notStarted">未着手</option>
+                  <option value="working">作業中</option>
+                </select>
                 <Button onClick={() => handleComplete(todo.id)} text='完了'/>
                 <Button onClick={() => handleDelete(todo.id)} text='削除'/>
               </li>
-            ))}
+              )
+            )
+            // ここまで
+          }
         </ul>
       </div>
       <div className="complete-area">
