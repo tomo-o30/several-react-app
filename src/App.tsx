@@ -1,23 +1,73 @@
-import { useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import "./App.css";
+import Button from "./components/Button";
 
 interface Todo {
   id: number;
   completeFlag: boolean;
   text: string;
+  todoState: string;
 }
 
-const App = ()=> {
+const App = () => {
+  // todoアイテム全体
   const [todos, setTodos] = useState<Todo[]>([]);
+  // 表示する未完了のtodoアイテム
+  const [displayUndoneTodos, setDisplayUndoneTodos] = useState<Todo[]>([]);
+  // 表示する完了のtodoアイテム
+  const [displayDoneTodos, setDisplayDoneTodos] = useState<Todo[]>([]);
+  // 個々のtodoアイテム
   const [todo, setTodo] = useState("");
+  // filter用のセレクトボックスのstate
+  const [todoFilterState, setTodoFilterState] = useState("all");
   const [id, setId] = useState(0);
 
-  const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    switch (todoFilterState) {
+      case "all":
+        setDisplayUndoneTodos(
+          todos.filter((todo) => {
+            return todo.completeFlag === false;
+          })
+        );
+        setDisplayDoneTodos(
+          todos.filter((todo) => {
+            return todo.completeFlag === true;
+          })
+        );
+        break;
+      case "notStarted":
+        setDisplayUndoneTodos(
+          todos.filter((todo) => {
+            return (
+              todo.todoState === "notStarted" && todo.completeFlag === false
+            );
+          })
+        );
+        setDisplayDoneTodos([]);
+        break;
+      case "working":
+        setDisplayUndoneTodos(
+          todos.filter((todo) => {
+            return todo.todoState === "working" && todo.completeFlag === false;
+          })
+        );
+        setDisplayDoneTodos([]);
+        break;
+      default:
+        console.log(todoFilterState, "は無効な値です。");
+        break;
+    }
+  }, [todoFilterState, todos]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
   };
 
-  const handleButtonClick = (e:React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const handleAddButtonClick = (e?: React.MouseEvent<HTMLButtonElement>) => {
+    if (e) {
+      e.preventDefault();
+    }
 
     if (todo !== "") {
       setId((prevId) => prevId + 1);
@@ -27,14 +77,14 @@ const App = ()=> {
           id,
           completeFlag: false,
           text: todo.trim(),
+          todoState: "notStarted",
         },
       ]);
-      console.log(todos);
       setTodo("");
     }
   };
 
-  const handleComplete = (id:number) => {
+  const handleComplete = (id: number) => {
     const updateTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completeFlag: true };
@@ -45,14 +95,14 @@ const App = ()=> {
     setTodos(updateTodos);
   };
 
-  const handleDelete = (id:number) => {
+  const handleDelete = (id: number) => {
     const newTodos = todos.filter((todo) => {
       return todo.id !== id;
     });
     setTodos(newTodos);
   };
 
-  const handleBeBack = (id:number) => {
+  const handleBeBack = (id: number) => {
     const updateTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completeFlag: false };
@@ -63,6 +113,24 @@ const App = ()=> {
     setTodos(updateTodos);
   };
 
+  const handleTodoStateChange = (
+    e: ChangeEvent<HTMLSelectElement>,
+    id: number
+  ): void => {
+    const updateTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, todoState: e.target.value };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(updateTodos);
+    //setTodoState(e.target.value);
+  };
+
+  const handleFilterStateChange = (e: ChangeEvent<HTMLSelectElement>): void => {
+    setTodoFilterState(e.target.value);
+  };
   return (
     <div>
       <div className="input-area">
@@ -73,37 +141,49 @@ const App = ()=> {
           value={todo}
           onChange={handleInputChange}
         />
-        <button onClick={(e)=>handleButtonClick(e)}>追加</button>
+        <Button onClick={(e) => handleAddButtonClick(e)} text="追加" />
+        <select
+          value={todoFilterState}
+          onChange={(e) => handleFilterStateChange(e)}
+          id="todo-state"
+        >
+          <option value="all">全て</option>
+          <option value="notStarted">未着手</option>
+          <option value="working">作業中</option>
+        </select>
       </div>
       <div className="imcomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          {todos
-            .filter((todo) => todo.completeFlag === false)
-            .map((todo) => (
-              <li className="todo-area" key={todo.id}>
-                {todo.text}
-                <button onClick={() => handleComplete(todo.id)}>完了</button>
-                <button onClick={() => handleDelete(todo.id)}>削除</button>
-              </li>
-            ))}
+          {displayUndoneTodos.map((todo) => (
+            <li className="todo-area" key={todo.id}>
+              {todo.text}
+              <select
+                onChange={(e) => handleTodoStateChange(e, todo.id)}
+                id="todo-state"
+              >
+                <option value="notStarted">未着手</option>
+                <option value="working">作業中</option>
+              </select>
+              <Button onClick={() => handleComplete(todo.id)} text="完了" />
+              <Button onClick={() => handleDelete(todo.id)} text="削除" />
+            </li>
+          ))}
         </ul>
       </div>
       <div className="complete-area">
         <p className="title">完了のTODO</p>
         <ul>
-          {todos
-            .filter((todo) => todo.completeFlag === true)
-            .map((todo) => (
-              <li className="todo-area" key={todo.id}>
-                {todo.text}{" "}
-                <button onClick={() => handleBeBack(todo.id)}>戻す</button>
-              </li>
-            ))}
+          {displayDoneTodos.map((todo) => (
+            <li className="todo-area" key={todo.id}>
+              {todo.text}{" "}
+              <Button onClick={() => handleBeBack(todo.id)} text="戻す" />
+            </li>
+          ))}
         </ul>
       </div>
     </div>
   );
-}
+};
 
 export default App;
