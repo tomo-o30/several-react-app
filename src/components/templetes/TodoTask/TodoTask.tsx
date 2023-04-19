@@ -20,6 +20,8 @@ const TodoTask = () => {
   const [todo, setTodo] = useState("");
   // filter用のセレクトボックスのstate
   const [todoFilterState, setTodoFilterState] = useState("all");
+  // 編集中かどうかを判断するflag
+  const [isChangingFlag, setIsChangingFlag] = useState(false);
   const [id, setId] = useState(0);
 
   useEffect(() => {
@@ -64,6 +66,13 @@ const TodoTask = () => {
     setTodo(e.target.value);
   };
 
+  const handleCompleteToChangeText = () => {
+    // TODO 編集完了のボタンをクリックしたら、inputの中身を空にする
+    console.log(todo);
+
+    setIsChangingFlag(false);
+  };
+
   const handleAddButtonClick = (e?: React.MouseEvent<HTMLButtonElement>) => {
     if (e) {
       e.preventDefault();
@@ -82,6 +91,11 @@ const TodoTask = () => {
       ]);
       setTodo("");
     }
+  };
+
+  const handleChangeText = (todo: Todo) => {
+    setIsChangingFlag(true);
+    // TODO 編集のボタンをクリックしたら、inputのvalueをtodoにする。
   };
 
   const handleComplete = (id: number) => {
@@ -125,7 +139,6 @@ const TodoTask = () => {
       }
     });
     setTodos(updateTodos);
-    //setTodoState(e.target.value);
   };
 
   const handleFilterStateChange = (e: ChangeEvent<HTMLSelectElement>): void => {
@@ -141,16 +154,27 @@ const TodoTask = () => {
           value={todo}
           onChange={handleInputChange}
         />
-        <Button onClick={(e) => handleAddButtonClick(e)} text="追加" />
-        <select
-          value={todoFilterState}
-          onChange={(e) => handleFilterStateChange(e)}
-          id="todo-state"
-        >
-          <option value="all">全て</option>
-          <option value="notStarted">未着手</option>
-          <option value="working">作業中</option>
-        </select>
+        {isChangingFlag ? (
+          <>
+            <Button
+              onClick={() => handleCompleteToChangeText()}
+              text="編集完了"
+            />
+          </>
+        ) : (
+          <>
+            <Button onClick={(e) => handleAddButtonClick(e)} text="追加" />
+            <select
+              value={todoFilterState}
+              onChange={(e) => handleFilterStateChange(e)}
+              id="todo-state"
+            >
+              <option value="all">全て</option>
+              <option value="notStarted">未着手</option>
+              <option value="working">作業中</option>
+            </select>
+          </>
+        )}
       </div>
       <div className="imcomplete-area">
         <p className="title">未完了のTODO</p>
@@ -165,6 +189,7 @@ const TodoTask = () => {
                 <option value="notStarted">未着手</option>
                 <option value="working">作業中</option>
               </select>
+              <Button onClick={() => handleChangeText(todo)} text="編集" />
               <Button onClick={() => handleComplete(todo.id)} text="完了" />
               <Button onClick={() => handleDelete(todo.id)} text="削除" />
             </li>
