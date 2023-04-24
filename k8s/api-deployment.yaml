@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: todo-api-server
+  name: todo-api-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-api-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: todo-api-server
+    spec:
+      containers:
+      - image: ghcr.io/nakamasato/fastapi-sample:v1.0
+        name: fastapi-sample
+        envFrom:
+          - configMapRef:
+              name: todo-api-server
+          - secretRef:
+              name: todo-api-server
+        resources: {}
+status: {}
