@@ -2,7 +2,7 @@
 FROM node:16-alpine
 
 # ワーキングディレクトリを設定する
-WORKDIR /src
+WORKDIR /to-do-app
 
 # ReactアプリケーションのソースコードをDockerイメージ内にコピーする
 COPY . .
