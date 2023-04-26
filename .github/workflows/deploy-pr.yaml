@@ -56,7 +56,7 @@ jobs:
           ref: master
       - name: Update manifest file
         env:
-          # ファイル名を指定
+          # ファイル名を指定する
           YAML_PATH: k8s/api-deployment.yaml
           CONTAINER_NAME: todo-api-server
           IMAGE_FULL_NAME: ${{ needs.build-and-push-image.outputs.tags }}
