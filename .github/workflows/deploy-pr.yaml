@@ -52,7 +52,7 @@ jobs:
       - name: Checkout tomo-o30/to-do-app
         uses: actions/checkout@v2
         with:
-          repository: ntomo-o30/to-do-app
+          repository: tomo-o30/to-do-app
           ref: master
       - name: Update manifest file
         env:
