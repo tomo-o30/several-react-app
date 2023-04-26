@@ -96,6 +96,7 @@ const TodoTask = () => {
   const handleChangeText = (todo: Todo) => {
     setIsChangingFlag(true);
     // TODO 編集のボタンをクリックしたら、inputのvalueをtodoにする。
+    setId(todo.id);
   };
 
   const handleComplete = (id: number) => {
