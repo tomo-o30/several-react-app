@@ -18,6 +18,7 @@ spec:
         app: todo-api-server
     spec:
       containers:
+      # TODO imageは変更する必要がある
       - image: ghcr.io/nakamasato/fastapi-sample:v1.0
         name: fastapi-sample
         envFrom:
