@@ -68,8 +68,18 @@ const TodoTask = () => {
 
   const handleCompleteToChangeText = () => {
     // TODO 編集完了のボタンをクリックしたら、inputの中身を空にする
-    console.log(todo);
-
+    console.log(id);
+    const arrayTodos = todos.map((item) => {
+      if (item.id === id) {
+        return { ...item, text: todo };
+      } else {
+        return item;
+      }
+    });
+    setTodos(arrayTodos);
+    setDisplayUndoneTodos(arrayTodos);
+    setDisplayDoneTodos(arrayTodos);
+    setTodo("");
     setIsChangingFlag(false);
   };
 
@@ -95,8 +105,8 @@ const TodoTask = () => {
 
   const handleChangeText = (todo: Todo) => {
     setIsChangingFlag(true);
-    // TODO 編集のボタンをクリックしたら、inputのvalueをtodoにする。
     setId(todo.id);
+    setTodo(todo.text);
   };
 
   const handleComplete = (id: number) => {
@@ -164,7 +174,10 @@ const TodoTask = () => {
           </>
         ) : (
           <>
-            <Button onClick={(e) => handleAddButtonClick(e)} text="追加" />
+            <Button
+              onClick={(e) => handleAddButtonClick(e)}
+              text="追加（バグあり）"
+            />
             <select
               value={todoFilterState}
               onChange={(e) => handleFilterStateChange(e)}
