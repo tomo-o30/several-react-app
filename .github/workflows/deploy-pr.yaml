@@ -43,33 +43,33 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  update-manifest:
-    # build-and-push-imageのjobが終わっていることを意味する
-    needs: build-and-push-image
-    runs-on: ubuntu-latest
-    steps:
-      # repository, blanchを指定
-      - name: Checkout tomo-o30/to-do-app
-        uses: actions/checkout@v2
-        with:
-          repository: tomo-o30/to-do-app
-          ref: master
-      - name: Update manifest file
-        env:
-          # ファイル名を指定
-          YAML_PATH: k8s/api-deployment.yaml
-          CONTAINER_NAME: todo-api-server
-          IMAGE_FULL_NAME: ${{ needs.build-and-push-image.outputs.tags }}
-        run: |
-          yq e -i "(.spec.template.spec.containers[]|select(.name == \"${CONTAINER_NAME}\").image)|=\"${IMAGE_FULL_NAME}\"" ${YAML_PATH}
-          cat ${YAML_PATH}
-      - name: Create PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.REPO_GITHUB_TOKEN }}
-          title: "Update todo-api-server"
-          base: master
-          draft: true
-          body: |
-            # Changes
-            - Update `todo-app-sample` image
+  # update-manifest:
+  #   # build-and-push-imageのjobが終わっていることを意味する
+  #   needs: build-and-push-image
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # repository, blanchを指定
+  #     - name: Checkout tomo-o30/to-do-app
+  #       uses: actions/checkout@v2
+  #       with:
+  #         repository: tomo-o30/to-do-app
+  #         ref: master
+  #     - name: Update manifest file
+  #       env:
+  #         # ファイル名を指定する
+  #         YAML_PATH: k8s/api-deployment.yaml
+  #         CONTAINER_NAME: todo-api-server
+  #         IMAGE_FULL_NAME: ${{ needs.build-and-push-image.outputs.tags }}
+  #       run: |
+  #         yq e -i "(.spec.template.spec.containers[]|select(.name == \"${CONTAINER_NAME}\").image)|=\"${IMAGE_FULL_NAME}\"" ${YAML_PATH}
+  #         cat ${YAML_PATH}
+  #     - name: Create PR
+  #       uses: peter-evans/create-pull-request@v3
+  #       with:
+  #         token: ${{ secrets.REPO_GITHUB_TOKEN }}
+  #         title: "Update todo-api-server"
+  #         base: master
+  #         draft: true
+  #         body: |
+  #           # Changes
+  #           - Update `todo-app-sample` image
