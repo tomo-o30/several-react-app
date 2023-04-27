@@ -69,16 +69,17 @@ const TodoTask = () => {
   const handleCompleteToChangeText = () => {
     // TODO 編集完了のボタンをクリックしたら、inputの中身を空にする
     console.log(id);
-    // setDisplayUndoneTodos(
-    //   todos.map((item) => {
-    //     if (item.id === id) {
-    //       return { ...item, text: todo };
-    //     } else {
-    //       return item;
-    //     }
-    //   })
-    // );
-    //setTodo(todo.text);
+    const arrayTodos = todos.map((item) => {
+      if (item.id === id) {
+        return { ...item, text: todo };
+      } else {
+        return item;
+      }
+    });
+    setTodos(arrayTodos);
+    setDisplayUndoneTodos(arrayTodos);
+    setDisplayDoneTodos(arrayTodos);
+    setTodo("");
     setIsChangingFlag(false);
   };
 
@@ -103,7 +104,6 @@ const TodoTask = () => {
   };
 
   const handleChangeText = (todo: Todo) => {
-    console.log(todo.id);
     setIsChangingFlag(true);
     setId(todo.id);
     setTodo(todo.text);
@@ -169,12 +169,15 @@ const TodoTask = () => {
           <>
             <Button
               onClick={() => handleCompleteToChangeText()}
-              text="編集完了(未実装)"
+              text="編集完了"
             />
           </>
         ) : (
           <>
-            <Button onClick={(e) => handleAddButtonClick(e)} text="追加" />
+            <Button
+              onClick={(e) => handleAddButtonClick(e)}
+              text="追加（バグあり）"
+            />
             <select
               value={todoFilterState}
               onChange={(e) => handleFilterStateChange(e)}
@@ -200,10 +203,7 @@ const TodoTask = () => {
                 <option value="notStarted">未着手</option>
                 <option value="working">作業中</option>
               </select>
-              <Button
-                onClick={() => handleChangeText(todo)}
-                text="編集(未実装)"
-              />
+              <Button onClick={() => handleChangeText(todo)} text="編集" />
               <Button onClick={() => handleComplete(todo.id)} text="完了" />
               <Button onClick={() => handleDelete(todo.id)} text="削除" />
             </li>
