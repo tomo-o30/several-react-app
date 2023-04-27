@@ -68,8 +68,17 @@ const TodoTask = () => {
 
   const handleCompleteToChangeText = () => {
     // TODO 編集完了のボタンをクリックしたら、inputの中身を空にする
-    console.log(todo);
-
+    console.log(id);
+    // setDisplayUndoneTodos(
+    //   todos.map((item) => {
+    //     if (item.id === id) {
+    //       return { ...item, text: todo };
+    //     } else {
+    //       return item;
+    //     }
+    //   })
+    // );
+    //setTodo(todo.text);
     setIsChangingFlag(false);
   };
 
@@ -94,9 +103,10 @@ const TodoTask = () => {
   };
 
   const handleChangeText = (todo: Todo) => {
+    console.log(todo.id);
     setIsChangingFlag(true);
-    // TODO 編集のボタンをクリックしたら、inputのvalueをtodoにする。
     setId(todo.id);
+    setTodo(todo.text);
   };
 
   const handleComplete = (id: number) => {
@@ -159,7 +169,7 @@ const TodoTask = () => {
           <>
             <Button
               onClick={() => handleCompleteToChangeText()}
-              text="編集完了"
+              text="編集完了(未実装)"
             />
           </>
         ) : (
@@ -190,7 +200,10 @@ const TodoTask = () => {
                 <option value="notStarted">未着手</option>
                 <option value="working">作業中</option>
               </select>
-              <Button onClick={() => handleChangeText(todo)} text="編集" />
+              <Button
+                onClick={() => handleChangeText(todo)}
+                text="編集(未実装)"
+              />
               <Button onClick={() => handleComplete(todo.id)} text="完了" />
               <Button onClick={() => handleDelete(todo.id)} text="削除" />
             </li>
