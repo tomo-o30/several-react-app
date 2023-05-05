@@ -27,4 +27,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/automated-build-test:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/to-do-app:latest
