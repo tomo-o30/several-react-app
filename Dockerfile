@@ -1,24 +1,19 @@
-# Node.jsのイメージをベースにする
-FROM node:16-alpine
+# Imageの指定
+FROM node:16.13.0-alpine3.12
 
-# ワーキングディレクトリを設定する
+# 使用するnodeのバージョンの指定
+ENV NODE_VERSION 14.18.1
+
+# docker内に入った時の初期パスの指定
 WORKDIR /to-do-app
 
-# ReactアプリケーションのソースコードをDockerイメージ内にコピーする
+# ローカル側のファイルをdocker内にコピーする
 COPY . .
 
-# 必要なパッケージをインストールする
-RUN npm install
-RUN npm run build
+# コンテナの使用ポート指定
+EXPOSE 3000
 
-# Nginxをインストールする
-RUN apk add --no-cache nginx
+# コンテナが勝手に終了してしまわないようにする設定
+ENV CI=true
 
-# Nginxの設定をコピーする
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# ポートを公開する
-EXPOSE 80
-
-# コンテナを開始するためのコマンドを設定する
-CMD ["nginx", "-g", "daemon off;"]
+CMD npm start
