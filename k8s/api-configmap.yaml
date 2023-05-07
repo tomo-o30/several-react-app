@@ -1,9 +1,0 @@
-apiVersion: v1
-data:
-  MYSQL_DATABASE: test_db
-  MYSQL_HOST: mysql.database.svc.cluster.local
-  MYSQL_USER: todo-api-server
-kind: ConfigMap
-metadata:
-  creationTimestamp: null
-  name: todo-api-server

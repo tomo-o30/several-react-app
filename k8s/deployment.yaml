@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-front-deployment
+spec:
+  # デプロイメントが管理するPodの数
+  replicas: 1
+  # デプロイメントが管理する管理するPodを選択するためのラベルセレクターを定義する
+  selector:
+    matchLabels:
+      app: react-front
+  # Podのテンプレートを定義する
+  template:
+    metadata:
+      labels:
+        app: react-front
+    spec:
+      containers:
+      - name: react
+        image: tomoo30/to-do-app
+        # volumeMounts:
+        #   - name: config-volume
+        #     mountPath: .
+        ports:
+        - containerPort: 3000
+        workingDir: /to-do-app
+      # volumes:
+      #   - name: config-volume
