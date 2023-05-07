@@ -1,9 +1,10 @@
 import { ChangeEvent, useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Button from "../../atoms/Button/Button";
 import "./TodoTask.css";
 
 interface Todo {
-  id: number;
+  id: string;
   completeFlag: boolean;
   text: string;
   todoState: string;
@@ -22,7 +23,7 @@ const TodoTask = () => {
   const [todoFilterState, setTodoFilterState] = useState("all");
   // 編集中かどうかを判断するflag
   const [isChangingFlag, setIsChangingFlag] = useState(false);
-  const [id, setId] = useState(0);
+  const [id, setId] = useState("");
 
   useEffect(() => {
     switch (todoFilterState) {
@@ -67,8 +68,6 @@ const TodoTask = () => {
   };
 
   const handleCompleteToChangeText = () => {
-    // TODO 編集完了のボタンをクリックしたら、inputの中身を空にする
-    console.log(id);
     const arrayTodos = todos.map((item) => {
       if (item.id === id) {
         return { ...item, text: todo };
@@ -89,16 +88,15 @@ const TodoTask = () => {
     }
 
     if (todo !== "") {
-      setId((prevId) => prevId + 1);
-      setTodos([
-        ...todos,
-        {
-          id,
-          completeFlag: false,
-          text: todo.trim(),
-          todoState: "notStarted",
-        },
-      ]);
+      //setId((prevId) => prevId + 1);
+      const addTodo = {
+        id: uuidv4(),
+        completeFlag: false,
+        text: todo.trim(),
+        todoState: "notStarted",
+      };
+      setTodos([...todos, addTodo]);
+      setId(addTodo.id);
       setTodo("");
     }
   };
@@ -109,7 +107,7 @@ const TodoTask = () => {
     setTodo(todo.text);
   };
 
-  const handleComplete = (id: number) => {
+  const handleComplete = (id: string) => {
     const updateTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completeFlag: true };
@@ -120,14 +118,14 @@ const TodoTask = () => {
     setTodos(updateTodos);
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     const newTodos = todos.filter((todo) => {
       return todo.id !== id;
     });
     setTodos(newTodos);
   };
 
-  const handleBeBack = (id: number) => {
+  const handleBeBack = (id: string) => {
     const updateTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completeFlag: false };
@@ -140,7 +138,7 @@ const TodoTask = () => {
 
   const handleTodoStateChange = (
     e: ChangeEvent<HTMLSelectElement>,
-    id: number
+    id: string
   ): void => {
     const updateTodos = todos.map((todo) => {
       if (todo.id === id) {
