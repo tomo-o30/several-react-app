@@ -1,6 +1,6 @@
 import SignIn from "../../organisms/SignIn";
 
-export const LineClone = () => {
+const LineClone = () => {
   return (
     <>
       aaaaa

@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 
-export const SignIn = () => {
+const SignIn = () => {
   return (
     <>
       <Button>グーグルでログインする</Button>
