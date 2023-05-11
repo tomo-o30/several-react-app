@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, query, getDocs } from "firebase/firestore";
 
 const Line = () => {
-  const [messages, setMessages] = useState({});
+  const [messages, setMessages] = useState();
   useEffect(() => {
     const getMessages = async () => {
       const q = query(collection(db, "messages"));
@@ -20,6 +20,13 @@ const Line = () => {
     <>
       {console.log(messages)}
       <Signout />
+      <div>
+        {/* {messages.map((message) => {
+          <div>
+            <div key={message.id}>{message}</div>
+          </div>;
+        })} */}
+      </div>
     </>
   );
 };
