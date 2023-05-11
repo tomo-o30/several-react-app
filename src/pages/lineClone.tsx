@@ -1,4 +1,4 @@
-import SignIn from "../../organisms/SignIn";
+import SignIn from "../components/organisms/SignIn";
 
 const LineClone = () => {
   return (
