@@ -10,7 +10,7 @@ import {
 
 type Message = {
   createdAt: { seconds: number; nanoseconds: number };
-  test: string;
+  text: string;
 };
 
 const Line = () => {
@@ -23,6 +23,7 @@ const Line = () => {
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => {
+        console.log(doc.data());
         setMessages([doc.data()]);
       });
     };
@@ -32,11 +33,11 @@ const Line = () => {
     <>
       <Signout />
       <div>
-        {messages.map((message) => {
+        {/* {messages ? messages.map(({text}) => {
           <div>
-            <div key={message.id}>{message}</div>
+            <div key={id}>{message.text}</div>
           </div>;
-        })}
+        }): } */}
       </div>
     </>
   );
