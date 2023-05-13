@@ -32,11 +32,11 @@ const Line = () => {
     <>
       <Signout />
       <div>
-        {/* {messages.map((message) => {
+        {messages.map((message) => {
           <div>
             <div key={message.id}>{message}</div>
           </div>;
-        })} */}
+        })}
       </div>
     </>
   );
