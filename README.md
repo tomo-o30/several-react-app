@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+## アプリ URL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[https://to-do-app-sepia-eight.vercel.app/](https://to-do-app-sepia-eight.vercel.app/)
 
-## Available Scripts
+### アプリ一覧
 
-In the project directory, you can run:
+https://to-do-app-sepia-eight.vercel.app/
 
-### `npm start`
+### Todo アプリ
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://to-do-app-sepia-eight.vercel.app/todo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Line クローンアプリ
+
+https://to-do-app-sepia-eight.vercel.app/line
+
+## 実行可能なスクリプト
+
+このプロジェクトでは以下のスクリプトを実行することができます.
+
+### `npm run dev`
+
+レポジトリをクローン後に`npm run dev`を行ってください。
+[http://localhost:3000](http://localhost:3000) を開くと、ブラウザで見ることができます。
+
+変更を加えるとページが再読み込みされます。
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run start`
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## サインイン用アカウント
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+メールアドレス：test@test.com
+パスワード　　：testuser
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 開発環境
 
-### `npm run eject`
+### フロントエンド
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 言語・フレームワーク
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+React(v18.2.0)
+Next.js(v13.2.4)
+Typescript(v4.7.3)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### デザイン
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+material 　 UI
+Chakra UI
 
-## Learn More
+#### テスト
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+jest
+React Testing Library
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### バックエンド
 
-### Code Splitting
+Firebase (v9.18.0)
+Firestore
+Firestorage
+FireAuthentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### インフラ
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Github Actions
+Vercel
+Docker(Dockerfile, DockerCompose)
+Kubenetes(未完成)
 
 ### Making a Progressive Web App
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
 ### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

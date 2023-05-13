@@ -1,7 +1,8 @@
 import { ChangeEvent, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Button from "../../atoms/Button/Button";
-import "./TodoTask.css";
+
+import Styles from "./TodoTask.module.css";
 
 interface Todo {
   id: string;
@@ -155,8 +156,9 @@ const TodoTask = () => {
   };
   return (
     <div>
-      <div className="input-area">
+      <div className={Styles.inputArea}>
         <input
+          className={Styles.inputStyle}
           name="todo"
           type="text"
           placeholder="Create a new todo"
@@ -188,11 +190,11 @@ const TodoTask = () => {
           </>
         )}
       </div>
-      <div className="imcomplete-area">
-        <p className="title">未完了のTODO</p>
+      <div className={Styles.imcompleteArea}>
+        <p className={Styles.title}>未完了のTODO</p>
         <ul>
           {displayUndoneTodos.map((todo) => (
-            <li className="todo-area" key={todo.id}>
+            <li className={Styles.todoArea} key={todo.id}>
               {todo.text}
               <select
                 onChange={(e) => handleTodoStateChange(e, todo.id)}
@@ -208,11 +210,11 @@ const TodoTask = () => {
           ))}
         </ul>
       </div>
-      <div className="complete-area">
-        <p className="title">完了のTODO</p>
+      <div className={Styles.completeArea}>
+        <p className={Styles.title}>完了のTODO</p>
         <ul>
           {displayDoneTodos.map((todo) => (
-            <li className="todo-area" key={todo.id}>
+            <li className={Styles.todoArea} key={todo.id}>
               {todo.text}{" "}
               <Button onClick={() => handleBeBack(todo.id)} text="戻す" />
             </li>
