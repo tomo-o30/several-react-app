@@ -23,7 +23,7 @@ const Line = () => {
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => {
-        setMessages([messages, doc.data()]);
+        setMessages([doc.data()]);
       });
     };
     getMessages();
@@ -32,11 +32,11 @@ const Line = () => {
     <>
       <Signout />
       <div>
-        {/* {messages ? messages.map((message: ) => {
+        {messages.map((message) => {
           <div>
             <div key={message.id}>{message}</div>
           </div>;
-        })} */}
+        })}
       </div>
     </>
   );
