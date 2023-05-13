@@ -1,7 +1,7 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 // 全体にかけるCSS
-import "./app.css";
+import "./global.css";
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>

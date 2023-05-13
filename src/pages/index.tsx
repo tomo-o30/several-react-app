@@ -11,10 +11,13 @@ const Home = () => {
     <>
       <p>{data.message}</p>
       <div>
-        <Link href="todo">TodoTask</Link>
+        <Link href="todo">todoTask</Link>
       </div>
       <div>
         <Link href="line">lineClone</Link>
+      </div>
+      <div>
+        <Link href="nextblog">nextBlog</Link>
       </div>
     </>
   );
