@@ -1,6 +1,6 @@
 import TodoTask from "../components/templetes/TodoTask/TodoTask";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <TodoTask />
