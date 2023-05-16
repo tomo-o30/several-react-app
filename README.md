@@ -1,21 +1,16 @@
 ## アプリ URL
-
 [https://to-do-app-sepia-eight.vercel.app/](https://to-do-app-sepia-eight.vercel.app/)
 
-### アプリ一覧
-
+### `アプリ一覧`
 https://to-do-app-sepia-eight.vercel.app/
 
-### Todo アプリ
-
+### `Todo アプリ`
 https://to-do-app-sepia-eight.vercel.app/todo
 
-### Line クローンアプリ
-
+### `Line クローンアプリ`
 https://to-do-app-sepia-eight.vercel.app/line
 
 ## 実行可能なスクリプト
-
 このプロジェクトでは以下のスクリプトを実行することができます.
 
 ### `npm run dev`
@@ -33,13 +28,11 @@ https://to-do-app-sepia-eight.vercel.app/line
 
 ## サインイン用アカウント
 
-メールアドレス：test@test.com
+メールアドレス：test@test.com  
 パスワード　　：testuser
 
 ## 開発環境
-
-### フロントエンド
-
+### `フロントエンド`
 #### 言語・フレームワーク
 React(v18.2.0)  
 Next.js(v13.2.4)  
@@ -53,20 +46,15 @@ Chakra UI
 jest  
 React Testing Library  
 
-### バックエンド
+### `バックエンド`
 Firebase (v9.18.0)  
 Firestore  
 Firestorage  
 FireAuthentication  
   
-### インフラ
+### `インフラ`
 Github Actions  
 Vercel  
 Docker(Dockerfile, DockerCompose)  
 Kubenetes(未完成)  
   
-### Making a Progressive Web App
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Deployment
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
