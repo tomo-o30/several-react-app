@@ -20,8 +20,8 @@ https://to-do-app-sepia-eight.vercel.app/line
 
 ### `npm run dev`
 
-レポジトリをクローン後に`npm run dev`を行ってください。
-[http://localhost:3000](http://localhost:3000) を開くと、ブラウザで見ることができます。
+レポジトリをクローン後に`npm run dev`を行ってください。  
+[http://localhost:3000](http://localhost:3000) を開くと、ブラウザで見ることができます。  
 
 変更を加えるとページが再読み込みされます。
 
@@ -41,39 +41,32 @@ https://to-do-app-sepia-eight.vercel.app/line
 ### フロントエンド
 
 #### 言語・フレームワーク
-
-React(v18.2.0)
-Next.js(v13.2.4)
-Typescript(v4.7.3)
-
+React(v18.2.0)  
+Next.js(v13.2.4)  
+Typescript(v4.7.3)  
+  
 #### デザイン
-
-material 　 UI
-Chakra UI
-
+material UI  
+Chakra UI  
+  
 #### テスト
-
-jest
-React Testing Library
+jest  
+React Testing Library  
 
 ### バックエンド
-
-Firebase (v9.18.0)
-Firestore
-Firestorage
-FireAuthentication
-
+Firebase (v9.18.0)  
+Firestore  
+Firestorage  
+FireAuthentication  
+  
 ### インフラ
-
-Github Actions
-Vercel
-Docker(Dockerfile, DockerCompose)
-Kubenetes(未完成)
-
+Github Actions  
+Vercel  
+Docker(Dockerfile, DockerCompose)  
+Kubenetes(未完成)  
+  
 ### Making a Progressive Web App
-
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
 ### Deployment
-
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
