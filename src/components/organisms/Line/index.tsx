@@ -33,11 +33,13 @@ const Line = () => {
     <>
       <Signout />
       <div>
-        {/* {messages ? messages.map(({text}) => {
-          <div>
-            <div key={id}>{message.text}</div>
-          </div>;
-        }): } */}
+        {messages?.map((message) => {
+          return (
+            <div>
+              <div key={message.text}>{message.text}</div>
+            </div>
+          );
+        })}
       </div>
     </>
   );
