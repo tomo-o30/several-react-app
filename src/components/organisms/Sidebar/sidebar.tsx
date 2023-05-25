@@ -37,7 +37,6 @@ const Sidebar = () => {
           <div className={styles.idebarChannelList}>
             <SidebarChannel />
           </div>
-
           <div className={styles.sidebarFooter}>
             <div className={styles.sidebarAccount}>
               <img src="./icon.png" alt="" />

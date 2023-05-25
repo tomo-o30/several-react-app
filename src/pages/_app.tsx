@@ -12,6 +12,10 @@ const App = ({ Component, pageProps }: AppProps) => (
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <link
+          href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
+          rel="stylesheet"
+        />
         {/* <link rel="shortcut icon" href="/favicon.png" key="shortcutIcon" /> */}
         {/* <link rel="manifest" href="/manifest.json" /> */}
       </Head>
