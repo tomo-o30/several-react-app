@@ -10,17 +10,26 @@ import HelpIcon from "@mui/icons-material/Help";
 const chatHeader = () => {
   return (
     <div className={styles.chatHeader}>
-      <div className={styles.chatLeft}></div>
-      <div className={styles.chatRight}>
-        <NotificationsIcon />
-        <PushPinIcon />
-        <PeopleAltIcon />
+      <div className={styles.chatHeaderLeft}>
+        <h3 className={styles.chatHeaderH3}>
+          <span className={styles.chatHeaderHash}>#</span>
+          UDemy
+        </h3>
+      </div>
+      <div className={styles.chatHeaderRight}>
+        <NotificationsIcon className={styles.MuiSvgIconRoot} />
+        <PushPinIcon className={styles.MuiSvgIconRoot} />
+        <PeopleAltIcon className={styles.MuiSvgIconRoot} />
         <div className={styles.chatHeaderSearch}>
-          <input type="text" placeholder="検索" />
-          <SearchIcon />
+          <input
+            className={styles.chatHeaderInput}
+            type="text"
+            placeholder="検索"
+          />
+          <SearchIcon className={styles.MuiSvgIconRoot} />
         </div>
-        <SendIcon />
-        <HelpIcon />
+        <SendIcon className={styles.MuiSvgIconRoot} />
+        <HelpIcon className={styles.MuiSvgIconRoot} />
       </div>
     </div>
   );
