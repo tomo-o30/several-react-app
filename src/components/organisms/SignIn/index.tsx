@@ -1,11 +1,10 @@
 import { Button } from "@mui/material";
-import { auth } from "../../../firebase";
+import { auth, provider } from "../../../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import styles from "./index.module.scss";
 
 const SignIn = () => {
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-
+  const signIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -15,15 +14,17 @@ const SignIn = () => {
         }
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // const email = error.customData.email;
-        // const credential = GoogleAuthProvider.credentialFromError(error);
+        alert(error.message);
       });
   };
   return (
     <>
-      <Button onClick={signInWithGoogle}>グーグルでログインする</Button>
+      <div className={styles.login}>
+        <div className={styles.loginLogo}>
+          <img src="./react_logo.png" alt="" />
+        </div>
+        <Button onClick={signIn}>ログイン</Button>
+      </div>
     </>
   );
 };
