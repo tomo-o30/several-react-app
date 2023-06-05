@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./sidebar.module.scss";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
@@ -6,23 +6,14 @@ import MicIcon from "@mui/icons-material/Mic";
 import HeadphonesIcon from "@mui/icons-material/Headphones";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SidebarChannel from "../SidebarChannel/sidebarChannel";
-import { auth, db } from "../../../firebase";
+import { auth } from "../../../firebase";
 import { useAppSelector } from "../../../app/hooks";
-import { collection, onSnapshot, query } from "firebase/firestore";
-import {} from "firebase/firestore";
+import useCollection from "../../../hooks/useCollection";
 
 const Sidebar = () => {
   const user = useAppSelector((state) => state.user);
 
-  const q = query(collection(db, "channels"));
-
-  useEffect(() => {
-    onSnapshot(q, (querySnapshot) => {
-      const channelsResults = [];
-      querySnapshot.docs.forEach((doc) => console.log(doc));
-    });
-  }, []);
-
+  const { documents: channels } = useCollection("channels");
   return (
     <div className={styles.sidebar}>
       {/* {sidebarLeft} */}
@@ -49,8 +40,14 @@ const Sidebar = () => {
             </div>
             <AddIcon className={styles.sidebarAddIcon} />
           </div>
-          <div className={styles.idebarChannelList}>
-            <SidebarChannel />
+          <div className={styles.sidebarChannelList}>
+            {channels.map((channel) => (
+              <SidebarChannel
+                channel={channel}
+                id={channel.id}
+                key={channel.id}
+              />
+            ))}
           </div>
           <div className={styles.sidebarFooter}>
             <div className={styles.sidebarAccount}>
