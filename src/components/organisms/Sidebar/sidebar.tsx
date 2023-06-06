@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./sidebar.module.scss";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,21 +8,23 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import SidebarChannel from "../SidebarChannel/sidebarChannel";
 import { auth, db } from "../../../firebase";
 import { useAppSelector } from "../../../app/hooks";
-import { collection, onSnapshot, query } from "firebase/firestore";
-import {} from "firebase/firestore";
+import useCollection from "../../../hooks/useCollection";
+import { addDoc, collection } from "firebase/firestore";
 
 const Sidebar = () => {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.user);
+  console.log(user);
 
-  const q = query(collection(db, "channels"));
+  const { documents: channels } = useCollection("channels");
 
-  useEffect(() => {
-    onSnapshot(q, (querySnapshot) => {
-      const channelsResults = [];
-      querySnapshot.docs.forEach((doc) => console.log(doc));
-    });
-  }, []);
-
+  const addChannel = async () => {
+    let channelName: string | null = prompt("新しいチャンネルを作成します。");
+    if (channelName) {
+      await addDoc(collection(db, "channels"), {
+        channelName: channelName,
+      });
+    }
+  };
   return (
     <div className={styles.sidebar}>
       {/* {sidebarLeft} */}
@@ -47,10 +49,21 @@ const Sidebar = () => {
               <ExpandMoreIcon />
               <h4>プログラミングチャンネル</h4>
             </div>
-            <AddIcon className={styles.sidebarAddIcon} />
+            <AddIcon
+              onClick={() => {
+                addChannel();
+              }}
+              className={styles.sidebarAddIcon}
+            />
           </div>
-          <div className={styles.idebarChannelList}>
-            <SidebarChannel />
+          <div className={styles.sidebarChannelList}>
+            {channels.map((channel) => (
+              <SidebarChannel
+                channel={channel}
+                id={channel.id}
+                key={channel.id}
+              />
+            ))}
           </div>
           <div className={styles.sidebarFooter}>
             <div className={styles.sidebarAccount}>
