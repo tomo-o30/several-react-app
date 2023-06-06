@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useAppSelector } from "../app/hooks";
+import { useEffect, useState } from "react";
 import {
-  CollectionReference,
   DocumentData,
   Query,
   collection,

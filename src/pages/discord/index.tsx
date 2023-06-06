@@ -10,13 +10,13 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "../../utils/ErrorFallBack";
 
 const DiscodeClone = () => {
-  const user = useAppSelector((state) => state.user);
-
+  const user = useAppSelector((state) => state.user.user);
+  // console.log("aaaa", user);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     auth.onAuthStateChanged((loginUser) => {
-      console.log(loginUser);
+      // console.log(loginUser);
       if (loginUser) {
         dispatch(
           login({
