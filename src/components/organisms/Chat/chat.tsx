@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./chat.module.scss";
 import ChatHeader from "../../molecules/ChatHeader/chatHeader";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -11,17 +11,34 @@ import {
   CollectionReference,
   DocumentData,
   DocumentReference,
+  Timestamp,
   addDoc,
   collection,
+  onSnapshot,
+  orderBy,
+  query,
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../../../firebase";
+import useSubCollection from "../../../hooks/useSubCollection";
+
+interface Messages {
+  timestamp: Timestamp;
+  message: string;
+  user: {
+    uid: string;
+    photo: string;
+    email: string;
+    displayName: string;
+  };
+}
 
 const Chat = () => {
   const channelName = useAppSelector((state) => state.channel.channelName);
   const [inputText, setInputText] = useState<string>("");
   const channelId = useAppSelector((state) => state.channel.channelId);
   const user = useAppSelector((state) => state.user.user);
+  const { subDocuments: messages } = useSubCollection("channels", "messages");
 
   const sendMessage = async (e: React.MouseEvent<HTMLButtonElement>) => {
     //enterを押してもリロードされなくする。
@@ -43,7 +60,7 @@ const Chat = () => {
         user: user,
       }
     );
-    console.log(docRef);
+    setInputText("");
   };
 
   return (
@@ -52,9 +69,14 @@ const Chat = () => {
       <ChatHeader channelName={channelName} />
       {/* {chatMessage} */}
       <div className={styles.chatMessage}>
-        <ChatMessage />
-        <ChatMessage />
-        <ChatMessage />
+        {messages.map((message, index) => (
+          <ChatMessage
+            key={index}
+            message={message.message}
+            timestamp={message.timestamp}
+            user={message.user}
+          />
+        ))}
       </div>
       {/* {chatInput} */}
       <div className={styles.chatInput}>
@@ -66,6 +88,7 @@ const Chat = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setInputText(e.target.value)
             }
+            value={inputText}
           />
           <button
             type="submit"
