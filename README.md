@@ -40,10 +40,12 @@ https://to-do-app-sepia-eight.vercel.app/discord
 React(v18.2.0)  
 Next.js(v13.2.4)  
 Typescript(v4.7.3)  
-  
+Redux (toolkit) (v1.9.5
+
 #### デザイン
+css
+scss
 material UI  
-Chakra UI  
   
 #### テスト
 jest  
