@@ -13,7 +13,6 @@ import { addDoc, collection } from "firebase/firestore";
 
 const Sidebar = () => {
   const user = useAppSelector((state) => state.user.user);
-  console.log(user);
 
   const { documents: channels } = useCollection("channels");
 
