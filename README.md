@@ -43,7 +43,7 @@ Typescript(v4.7.3)
 Redux (toolkit) (v1.9.5
 
 #### デザイン
-css  　
+css  
 scss  
 material UI  
   
