@@ -11,7 +11,7 @@ type Props = {
   channelName: string | null;
 };
 
-const chatHeader = (props: Props) => {
+const ChatHeader = (props: Props) => {
   const { channelName } = props;
   return (
     <div className={styles.chatHeader}>
@@ -40,4 +40,4 @@ const chatHeader = (props: Props) => {
   );
 };
 
-export default chatHeader;
+export default ChatHeader;

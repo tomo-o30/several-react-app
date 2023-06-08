@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { auth, provider } from "../../../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import styles from "./index.module.scss";
+import styles from "./Signin.module.scss";
 
 const SignIn = () => {
   const signIn = () => {

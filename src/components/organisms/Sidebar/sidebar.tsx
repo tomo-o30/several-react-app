@@ -5,7 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import MicIcon from "@mui/icons-material/Mic";
 import HeadphonesIcon from "@mui/icons-material/Headphones";
 import SettingsIcon from "@mui/icons-material/Settings";
-import SidebarChannel from "../SidebarChannel/sidebarChannel";
+import SidebarChannel from "../SidebarChannel/SidebarChannel";
 import { auth, db } from "../../../firebase";
 import { useAppSelector } from "../../../app/hooks";
 import useCollection from "../../../hooks/useCollection";

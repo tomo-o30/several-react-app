@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  DocumentData,
-  Query,
   Timestamp,
   collection,
   onSnapshot,
