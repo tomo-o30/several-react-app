@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./sidebar.module.scss";
+import styles from "./Sidebar.module.scss";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import MicIcon from "@mui/icons-material/Mic";

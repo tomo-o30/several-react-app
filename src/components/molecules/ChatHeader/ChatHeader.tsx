@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./chatHeader.module.scss";
+import styles from "./ChatHeader.module.scss";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
