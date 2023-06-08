@@ -1,4 +1,4 @@
-import TodoTask from "../../components/templetes/TodoTask/TodoTask";
+import TodoTask from "../components/templetes/TodoTask/TodoTask";
 
 const Home = () => {
   return (

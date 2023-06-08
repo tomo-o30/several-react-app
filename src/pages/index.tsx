@@ -20,6 +20,7 @@ const Home = () => {
         <Link href="line">lineClone</Link>
       </div>
       <div>
+        <Link href="nextblog">nextBlog</Link>
         <Link href="discord">discodeClone</Link>
       </div>
     </>
