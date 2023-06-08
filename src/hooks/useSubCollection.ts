@@ -34,12 +34,12 @@ const useSubCollection = (
       String(channelId),
       subCollectionName
     );
-    const conllectionRefOrderBy = query(
+    const collectionRefOrderBy = query(
       collectionRef,
       orderBy("timestamp", "desc")
     );
 
-    onSnapshot(conllectionRefOrderBy, (snapshot) => {
+    onSnapshot(collectionRefOrderBy, (snapshot) => {
       let results: Messages[] = [];
       snapshot.docs.forEach((doc) => {
         results.push({
