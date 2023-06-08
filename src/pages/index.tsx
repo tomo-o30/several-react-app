@@ -11,6 +11,9 @@ const Home = () => {
     <>
       <p>{data.message}</p>
       <div>
+        <Link href="materialUi">material ui icon利用サンプル一覧</Link>
+      </div>
+      <div>
         <Link href="todo">todoTask</Link>
       </div>
       <div>
@@ -18,6 +21,7 @@ const Home = () => {
       </div>
       <div>
         <Link href="nextblog">nextBlog</Link>
+        <Link href="discord">discodeClone</Link>
       </div>
     </>
   );
