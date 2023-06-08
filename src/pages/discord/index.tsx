@@ -1,7 +1,7 @@
-import Chat from "../../components/organisms/Chat/chat";
-import Sidebar from "../../components/organisms/Sidebar/sidebar";
-import styles from "./discord.module.scss";
-import SignIn from "../../components/organisms/SignIn";
+import Chat from "../../components/organisms/Chat/Chat";
+import Sidebar from "../../components/organisms/Sidebar/Sidebar";
+import styles from "./index.module.scss";
+import SignIn from "../../components/organisms/Signin/Signin";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useEffect } from "react";
 import { auth } from "../../firebase";

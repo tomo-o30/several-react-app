@@ -14,13 +14,15 @@ const Home = () => {
         <Link href="materialUi">material ui icon利用サンプル一覧</Link>
       </div>
       <div>
-        <Link href="todo">todoTask</Link>
+        <Link href="todoTask">todoTask</Link>
       </div>
       <div>
-        <Link href="line">lineClone</Link>
+        <Link href="lineClone">lineClone</Link>
       </div>
       <div>
         <Link href="nextblog">nextBlog</Link>
+      </div>
+      <div>
         <Link href="discord">discodeClone</Link>
       </div>
     </>

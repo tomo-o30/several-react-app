@@ -1,4 +1,4 @@
-import Signout from "../Signout";
+import Signout from "../Signout/Signout";
 import { db } from "../../../firebase";
 import { useEffect, useState } from "react";
 import {
