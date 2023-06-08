@@ -1,13 +1,13 @@
-import Chat from "../../components/organisms/Chat/Chat";
-import Sidebar from "../../components/organisms/Sidebar/Sidebar";
+
 import styles from "./index.module.scss";
-import SignIn from "../../components/organisms/Signin/Signin";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useEffect } from "react";
 import { auth } from "../../firebase";
 import { login, logout } from "../../redux/features/userSlice";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "../../utils/ErrorFallBack";
+import Sidebar from "../../components/organisms/Sidebar/Sidebar";
+import Chat from "../../components/organisms/Chat/Chat";
 
 const DiscodeClone = () => {
   const user = useAppSelector((state) => state.user.user);
