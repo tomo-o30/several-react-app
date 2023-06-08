@@ -61,7 +61,7 @@ const NextBlog = () => {
         </a>
       </footer>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         main {
           padding: 5rem 0;
           flex: 1;
@@ -110,7 +110,7 @@ const NextBlog = () => {
         * {
           box-sizing: border-box;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 };
