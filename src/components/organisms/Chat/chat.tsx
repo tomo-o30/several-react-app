@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./chat.module.scss";
+import styles from "./Chat.module.scss";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import GifIcon from "@mui/icons-material/Gif";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
@@ -39,7 +39,7 @@ const Chat = () => {
       "messages"
     );
 
-    const docRef: DocumentReference<DocumentData> = await addDoc(
+    await addDoc(
       collectionRef,
       {
         message: inputText,

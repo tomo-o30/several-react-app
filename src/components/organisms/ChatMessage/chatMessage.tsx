@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./chatMessage.module.scss";
+import styles from "./ChatMessage.module.scss";
 import { Timestamp } from "firebase/firestore";
 import { Avatar } from "@mui/material";
 
