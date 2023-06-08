@@ -8,7 +8,6 @@ import { useAppSelector } from "../../../app/hooks";
 import {
   CollectionReference,
   DocumentData,
-  DocumentReference,
   addDoc,
   collection,
   serverTimestamp,

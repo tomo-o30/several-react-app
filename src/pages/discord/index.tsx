@@ -8,6 +8,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallback } from "../../utils/ErrorFallBack";
 import Sidebar from "../../components/organisms/Sidebar/Sidebar";
 import Chat from "../../components/organisms/Chat/Chat";
+import SignIn from "../../components/organisms/Signin/Signin";
 
 const DiscodeClone = () => {
   const user = useAppSelector((state) => state.user.user);
