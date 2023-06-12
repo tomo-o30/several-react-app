@@ -28,10 +28,10 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       {/* {sidebarLeft} */}
       <div className={styles.sidebarLeft}>
-        <div className={styles.serverIcon}>
+        <div className={styles.sidebarIcon}>
           <img src="./react_logo.png" alt="" />
         </div>
-        <div className={styles.serverIcon}>
+        <div className={styles.sidebarIcon}>
           <img src="./react_logo.png" alt="" />
         </div>
       </div>
