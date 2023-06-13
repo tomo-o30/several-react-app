@@ -26,20 +26,20 @@
     // position: relative;
     // flex-grow: 1;
   }
+
+  .sidebarChannels {
+    padding: 13px;
+
+    .sidebarChannelsHeader {
+      display: flex;
+      color: white;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+    }
+  }
 }
 
-// .sidebarChannels{
-//   padding: 13px;
-// }
-
-// .sidebarChannelsHeader{
-//   display: flex;
-//   color: white;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin-top: 5px;
-
-// }
 // .sidebarHeader{
 //   display: flex;
 // }
