@@ -1,27 +1,25 @@
 ## アプリ URL
+[https://to-do-app-sepia-eight.vercel.app/](https://several-react-sepia-eight.vercel.app/)
 
-[https://to-do-app-sepia-eight.vercel.app/](https://to-do-app-sepia-eight.vercel.app/)
+### `アプリ一覧`
+[https://to-do-app-sepia-eight.vercel.app/](https://several-react-sepia-eight.vercel.app/)
 
-### アプリ一覧
+### `Todo アプリ`
+[https://to-do-app-sepia-eight.vercel.app/todoTask](https://several-react-sepia-eight.vercel.app/todoTask)
 
-https://to-do-app-sepia-eight.vercel.app/
+### `Line クローンアプリ`
+[https://to-do-app-sepia-eight.vercel.app/lineClone](https://several-react-sepia-eight.vercel.app/lineClone)
 
-### Todo アプリ
-
-https://to-do-app-sepia-eight.vercel.app/todo
-
-### Line クローンアプリ
-
-https://to-do-app-sepia-eight.vercel.app/line
+### `Discord クローンアプリ`
+[https://to-do-app-sepia-eight.vercel.app/discord](https://several-react-sepia-eight.vercel.app/discord)
 
 ## 実行可能なスクリプト
-
 このプロジェクトでは以下のスクリプトを実行することができます.
 
 ### `npm run dev`
 
-レポジトリをクローン後に`npm run dev`を行ってください。
-[http://localhost:3000](http://localhost:3000) を開くと、ブラウザで見ることができます。
+レポジトリをクローン後に`npm run dev`を行ってください。  
+[http://localhost:3000](http://localhost:3000) を開くと、ブラウザで見ることができます。  
 
 変更を加えるとページが再読み込みされます。
 
@@ -33,47 +31,35 @@ https://to-do-app-sepia-eight.vercel.app/line
 
 ## サインイン用アカウント
 
-メールアドレス：test@test.com
+メールアドレス：test@test.com  
 パスワード　　：testuser
 
 ## 開発環境
-
-### フロントエンド
-
+### `フロントエンド`
 #### 言語・フレームワーク
-
-React(v18.2.0)
-Next.js(v13.2.4)
-Typescript(v4.7.3)
+React(v18.2.0)  
+Next.js(v13.2.4)  
+Typescript(v4.7.3)  
+Redux (toolkit) (v1.9.5
 
 #### デザイン
-
-material 　 UI
-Chakra UI
-
+css  
+scss  
+material UI  
+  
 #### テスト
+jest  
+React Testing Library  
 
-jest
-React Testing Library
-
-### バックエンド
-
-Firebase (v9.18.0)
-Firestore
-Firestorage
-FireAuthentication
-
-### インフラ
-
-Github Actions
-Vercel
-Docker(Dockerfile, DockerCompose)
-Kubenetes(未完成)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### `バックエンド`
+Firebase (v9.18.0)  
+Firestore  
+Firestorage  
+FireAuthentication  
+  
+### `インフラ`
+Github Actions  
+Vercel  
+Docker(Dockerfile, DockerCompose)  
+Kubenetes(未完成)  
+  

@@ -1,4 +1,4 @@
-import Signout from "../Signout";
+import Signout from "../Signout/Signout";
 import { db } from "../../../firebase";
 import { useEffect, useState } from "react";
 import {
@@ -10,7 +10,7 @@ import {
 
 type Message = {
   createdAt: { seconds: number; nanoseconds: number };
-  test: string;
+  text: string;
 };
 
 const Line = () => {
@@ -23,6 +23,7 @@ const Line = () => {
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => {
+        console.log(doc.data());
         setMessages([doc.data()]);
       });
     };
@@ -32,11 +33,13 @@ const Line = () => {
     <>
       <Signout />
       <div>
-        {/* {messages.map((message) => {
-          <div>
-            <div key={message.id}>{message}</div>
-          </div>;
-        })} */}
+        {messages?.map((message) => {
+          return (
+            <div>
+              <div key={message.text}>{message.text}</div>
+            </div>
+          );
+        })}
       </div>
     </>
   );
