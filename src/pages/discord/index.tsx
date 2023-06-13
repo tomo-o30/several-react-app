@@ -1,4 +1,3 @@
-
 import styles from "./index.module.scss";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { useEffect } from "react";
@@ -12,12 +11,10 @@ import SignIn from "../../components/organisms/Signin/Signin";
 
 const DiscodeClone = () => {
   const user = useAppSelector((state) => state.user.user);
-  // console.log("aaaa", user);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     auth.onAuthStateChanged((loginUser) => {
-      // console.log(loginUser);
       if (loginUser) {
         dispatch(
           login({
